@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apple Bug</title>
+    <style type="text/css">
+      body {
+        margin: 40px auto;
+        max-width: 650px;
+        line-height: 1.6;
+        font-size: 18px;
+        color: #444;
+        padding: 0 10px;
+      }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Apple bug demonstration.</h1>
+      <aside>Service Worker + SameSite Cookies + Safari Tab recovery = broken site</aside>
+    </header>
+    <article>
+      <h2>Refresh the cookie, then kill Safari and re-open it.</h2>
+      <p><strong>When Safari comes back it doesn't send the SameSite cookie!</strong></p>
+      <p>
+        Value of the received cookie:
+      </p>
+      <p>
+        <%= @cookie || 'nil' %>
+      </p>
+      <a href="/set-cookies">Refresh Cookie Time</a>
+    </article>
+    <footer>
+      <hr />
+      <h2>Epilogue</h2>
+      <p>
+        Design of the website from 
+        <a href="http://bettermotherfuckingwebsite.com/">bettermotherfuckingwebsite</a>
+      </p>
+      <p>
+        This page&mdash;that is just a bug repro for a report&mdash;was created by
+        <a href="https://twitter.com/rafael_falco">me</a>.
+      </p>
+    </footer>
+  </body>
+  <script>
+    // Check that service workers are supported
+
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js');
+      });
+
+    }
+  </script>
+</html>
