@@ -27,26 +27,22 @@
     </header>
     <article>
       <h2>Refresh the cookie, then kill Safari and re-open it.</h2>
-      <p><strong>When Safari comes back it doesn't send the SameSite cookie!</strong></p>
-      <p>
-        Value of the received cookie:
-      </p>
-      <p>
-        <%= @cookie || 'nil' %>
-      </p>
-      <a href="/set-cookies">Refresh Cookie Time</a>
+      <p>When Safari comes back, hit refresh the page <em>multiple times</em>.
+      The cookie is nil on every refresh.
+      Now click on the address bar, and hit go.</p>
+      <p>The cookie was there <strong>all the time</strong>.</p>
+      <div class="cookie">
+        <p>
+          Value of the received cookie:
+        </p>
+        <p>
+          <%= @cookie || 'nil' %>
+        </p>
+        <a href="/set-cookies">Refresh Cookie Time</a>
+      </div>
     </article>
     <footer>
       <hr />
-      <h2>Epilogue</h2>
-      <p>
-        Design of the website from 
-        <a href="http://bettermotherfuckingwebsite.com/">bettermotherfuckingwebsite</a>
-      </p>
-      <p>
-        This page&mdash;that is just a bug repro for a report&mdash;was created by
-        <a href="https://twitter.com/rafael_falco">me</a>.
-      </p>
     </footer>
   </body>
   <script>
